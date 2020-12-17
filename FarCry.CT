@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="31">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"CE Compact-UI (numeric*)"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+luacall(function cycleFullCompact(sender,force); local state = not(compactmenuitem.Caption == 'Compact View Mode'); if force~=nil then state = not force end; compactmenuitem.Caption = state and 'Compact View Mode' or 'Full view Mode'; getMainForm().Splitter1.Visible = state; getMainForm().Panel4.Visible = state; getMainForm().Panel5.Visible = state; end; function addCompactMenu(); if compactmenualreadyexists then return end; local parent = getMainForm().Menu.Items; compactmenuitem = createMenuItem(parent); parent.add(compactmenuitem); compactmenuitem.Caption = 'Compact View Mode'; compactmenuitem.OnClick = cycleFullCompact; compactmenualreadyexists = 'yes'; end; addCompactMenu(); cycleFullCompact(nil,true))
+
+[DISABLE]
+
+luacall(cycleFullCompact(nil,false))
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>106</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Bottomless Clip Guns(numeric1)"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+mov [esi+000000A8],99
+
+originalcode:
+//mov esi,[esi+000000A8]
+
+exit:
+jmp returnhere
+
+"CryGame.dll"+7B886:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"CryGame.dll"+7B886:
+mov esi,[esi+000000A8]
+//Alt: db 8B B6 A8 00 00 00
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>97</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"NoSpread(numeric2)"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+CryGame.dll+58EDB:
+  db 90 90
+
+CryGame.dll+A6DE1:
+  db 90 90 90 90 90 90
+
+CryGame.dll+A71D5:
+  db 90 90 90 90 90 90
+
+CryGame.dll+A723C:
+  db 90 90 90 90 90 90
+
+[DISABLE]
+
+CryGame.dll+58EDB:
+  db D9 00
+
+CryGame.dll+A6DE1:
+  db D9 9E D4 00 00 00
+
+CryGame.dll+A71D5:
+  db D9 86 D4 00 00 00
+
+CryGame.dll+A723C:
+  db D9 9E D4 00 00 00
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>98</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"NoRecoil(numeric3)"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+CryGame.dll+A7066:
+  db 90 90 90
+
+CryGame.dll+A5852:
+  db 90 90 90
+
+CryGame.dll+A5727:
+  db 90 90 90
+
+CryGame.dll+A731E:
+  db 90 90 90
+
+CryGame.dll+A5806:
+  db 90 90 90
+
+CryGame.dll+A7333:
+  db 90 90 90
+
+CryGame.dll+A5821:
+  db 90 90 90
+
+CryGame.dll+A7350:
+  db 90 90 90
+
+CryGame.dll+A7341:
+  db 90 90 90
+
+CryGame.dll+A5818:
+  db 90 90 90
+
+[DISABLE]
+
+CryGame.dll+A7066:
+  db D9 5E 14
+
+CryGame.dll+A5852:
+  db D9 5B 14
+
+CryGame.dll+A5727:
+  db D9 5B 14
+
+CryGame.dll+A731E:
+  db D9 56 1C
+
+CryGame.dll+A5806:
+  db D9 53 1C
+
+CryGame.dll+A7333:
+  db D9 5E 20
+
+CryGame.dll+A5821:
+  db D9 5B 20
+
+CryGame.dll+A7350:
+  db D9 5E 20
+
+CryGame.dll+A7341:
+  db D9 5E 1C
+
+CryGame.dll+A5818:
+  db D9 5B 1C
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>99</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"Inf. Stamina(numeric4)"</Description>
+      <Options moHideChildren="1"/>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+mov [ebx+14C],(float)100
+
+originalcode:
+//mov eax,[ebx+0000014C]
+
+exit:
+jmp returnhere
+
+"CryGame.dll"+A4BAB:
+jmp newmem
+nop
+returnhere:
+
+[DISABLE]
+dealloc(newmem)
+"CryGame.dll"+A4BAB:
+mov eax,[ebx+0000014C]
+
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>52</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>8</ID>
+          <Description>"Inf. Stamina(2)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+mov dword ptr [ecx+14C],(float)100
+
+originalcode:
+//fst dword ptr [ecx+0000014C]
+
+exit:
+jmp returnhere
+
+"CryGame.dll"+9F711:
+jmp newmem
+nop
+returnhere:
+
+[DISABLE]
+dealloc(newmem)
+"CryGame.dll"+9F711:
+fst dword ptr [ecx+0000014C]
+
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"RapidFire (Semi-Auto guns only)"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+CryGame.dll+A7030:
+  db 90 90 90 90 90 90
+
+[DISABLE]
+
+CryGame.dll+A7030:
+  db 0F 84 EB 03 00 00
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"Speedhack 0.25"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+luacall(Speedhack_setSpeed(0.25))
+
+[DISABLE]
+
+luacall(Speedhack_setSpeed(1))
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"Speedhack 2.5"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+luacall(Speedhack_setSpeed(2.5))
+
+[DISABLE]
+
+luacall(Speedhack_setSpeed(1))
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
